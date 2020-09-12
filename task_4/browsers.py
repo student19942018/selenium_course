@@ -6,7 +6,9 @@ from msedge.selenium_tools import Edge, EdgeOptions
 @pytest.fixture
 def driver(request):
     # старая схема запуска Firefox:
-    # wd = webdriver.Firefox(capabilities={"marionette": False})
+    # options = webdriver.FirefoxOptions()
+    # options.binary_location = "C:\\Program Files\\Mozilla Firefox ESR\\firefox.exe"
+    # wd = webdriver.Firefox(capabilities={"marionette": False}, options=options)
 
     # запуск Firefox Nightly:
     # options = webdriver.FirefoxOptions()
