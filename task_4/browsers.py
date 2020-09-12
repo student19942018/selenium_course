@@ -14,14 +14,14 @@ def driver(request):
         wd = webdriver.Chrome(options=options)
 
     if browser == "Firefox":
-        wd = webdriver.Firefox(firefox_binary="C:\\Program Files\Mozilla Firefox\\firefox.exe")
+        wd = webdriver.Firefox(firefox_binary="C:\\Program Files\\Mozilla Firefox\\firefox.exe")
 
     if browser == "Firefox ESR":
         wd = webdriver.Firefox(capabilities={"marionette": False},
                                firefox_binary="C:\\Program Files\\Mozilla Firefox ESR\\firefox.exe")
 
     if browser == "Firefox Nightly":
-        wd = webdriver.Firefox(firefox_binary="C:\\Program Files\Firefox Nightly\\firefox.exe")
+        wd = webdriver.Firefox(firefox_binary="C:\\Program Files\\Firefox Nightly\\firefox.exe")
 
     if browser == "Microsoft Edge":
     # Microsoft Edge (based on Chromium)
