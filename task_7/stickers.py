@@ -15,4 +15,6 @@ def test_check_stickers(driver):
     driver.get("http://localhost/litecart/en/")
     products = driver.find_elements_by_xpath(".//li[contains(@class, 'product')]")
     for product in products:
-        product.find_element_by_xpath(".//div[contains(@class, 'sticker')]")
+        stickers = product.find_elements_by_xpath(".//div[contains(@class, 'sticker')]")
+        assert len(stickers) == 1
+
