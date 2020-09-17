@@ -73,7 +73,7 @@ def test_fill_registration_form(driver):
 
     time.sleep(1)
     state = Select(driver.find_element_by_xpath(".//select[@name='zone_code']"))
-    index = random.randint(0, len(state.options))
+    index = random.randint(0, len(state.options)-1)
     state.select_by_index(index)
 
     password_elem = driver.find_element_by_xpath(".//input[@name='password']")
