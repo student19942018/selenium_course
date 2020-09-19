@@ -92,18 +92,18 @@ def test_fill_registration_form(driver):
 
 def test_click_create_account(driver):
     driver.find_element_by_xpath(".//button[@name='create_account']").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//a[text()='Logout']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//a[text()='Logout']")))
 
 
 def test_logout(driver):
     driver.find_element_by_xpath(".//a[text()='Logout']").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//button[@name='login']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//button[@name='login']")))
 
 
 def test_login_and_logout(driver):
     driver.find_element_by_xpath(".//input[@name='email']").send_keys(email)
     driver.find_element_by_xpath(".//input[@name='password']").send_keys(password)
     driver.find_element_by_xpath(".//button[@name='login']").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//a[text()='Logout']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//a[text()='Logout']")))
 
     test_logout(driver)

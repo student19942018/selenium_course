@@ -144,7 +144,7 @@ def test_fill_prices(driver):
 
 def test_click_save(driver):
     driver.find_element_by_xpath(".//button[@name='save']").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//h1[text()=' Catalog']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//h1[text()=' Catalog']")))
 
 
 def test_check_save(driver):
