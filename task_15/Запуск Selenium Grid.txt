@@ -1,0 +1,45 @@
+Основная машина WIN10 имеет ip
+IPv4-адрес. . . . . . . . . . . . : 192.168.56.1
+
+Запуск хаба на ней:
+C:\webdriver> java -jar .\selenium-server-standalone-3.141.59.jar -role hub
+00:20:57.032 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+00:20:57.106 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
+2020-09-26 00:20:57.439:INFO::main: Logging initialized @578ms to org.seleniumhq.jetty9.util.log.StdErrLog
+00:20:58.110 INFO [Hub.start] - Selenium Grid hub is up and running
+00:20:58.110 INFO [Hub.start] - Nodes should register to http://10.0.0.4:4444/grid/register/
+00:20:58.110 INFO [Hub.start] - Clients should connect to http://10.0.0.4:4444/wd/hub
+
+Запуск узла на ней же:
+ C:\webdriver> java -jar .\selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.56.1:4444/wd/hub -capabilities browserName='chrome',maxInstances=5 -capabilities browserName='firefox',maxInstances=5
+00:39:09.178 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+00:39:09.264 INFO [GridLauncherV3.lambda$buildLaunchers$7] - Launching a Selenium Grid node on port 33031
+2020-09-26 00:39:10.108:INFO::main: Logging initialized @1104ms to org.seleniumhq.jetty9.util.log.StdErrLog
+00:39:10.271 INFO [WebDriverServlet.<init>] - Initialising WebDriverServlet
+00:39:10.353 INFO [SeleniumServer.boot] - Selenium Server is up and running on port 33031
+00:39:10.353 INFO [GridLauncherV3.lambda$buildLaunchers$7] - Selenium Grid node is up and ready to register to the hub
+00:39:10.640 INFO [SelfRegisteringRemote$1.run] - Starting auto registration thread. Will try to register every 5000 ms.
+00:39:11.130 INFO [SelfRegisteringRemote.registerToHub] - Registering the node to the hub: http://192.168.56.1:4444/grid/register
+00:39:11.395 INFO [SelfRegisteringRemote.registerToHub] - The node is registered to the hub and ready to use
+
+После этого в хабе видно новый узел:
+00:42:34.130 INFO [DefaultGridRegistry.add] - Registered a node http://10.0.0.11:30710
+
+
+На машине устанволена Vbox с Win8
+В настройках сети Vbox обязательно выбрать Сетевой мост!
+Однако из Vbox ip машины 192.168.56.1 не было видно, поэтому подключился по тому ip - что был указан в логах запуска хаба:
+C:\webdriver> java -jar .\selenium-server-standalone-3.141.59.jar -role node -hub http://10.0.0.4:4444/wd/hub -capabilities browserName='internet explorer'
+
+
+Чтобы проверить сессии - открыть хаб http://10.0.0.4:4444/ (или 192.168.56.1 - это одно и то же)
+Дока https://www.selenium.dev/docs/site/en/grid/setting_up_your_own_grid/
+
+
+Запуск тестов с указанием браузера (платформу можно не указывать, т.к. мы уже выставили ограничения по типам браузеров:
+driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_capabilities={"browserName": "internet explorer"})
+driver.get("https://google.com")
+driver.quit()
+driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_capabilities={"browserName": "chrome"})
+driver.quit()
+driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_capabilities={"browserName": "firefox"})
