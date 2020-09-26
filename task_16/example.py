@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-BROWSERSTACK_URL = 'https://bsuser7502154730:VpQXNd9JRPPApStAq8Bv@hub-cloud.browserstack.com/wd/hub'
+BROWSERSTACK_URL = 'https://***********:VpQXNd9JRPPApStAq8Bv@hub-cloud.browserstack.com/wd/hub'
 
 desired_cap = {
 
