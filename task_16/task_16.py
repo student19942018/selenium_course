@@ -4,7 +4,7 @@ from selenium import webdriver
 
 @pytest.fixture
 def driver(request):
-    BROWSERSTACK_URL = 'https://**************:VpQXNd9JRPPApStAq8Bv@hub-cloud.browserstack.com/wd/hub'
+    BROWSERSTACK_URL = 'https://**********:VpQXNd9JRPPApStAq8Bv@hub-cloud.browserstack.com/wd/hub'
 
     desired_cap = {
 
