@@ -32,13 +32,13 @@ def driver(request):
 
 def test_open_main_page(driver):
     driver.get("http://localhost/litecart/en/")
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//button[@name='login']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//button[@name='login']")))
 
 
 def test_click_new_customers(driver):
     link = driver.find_element_by_xpath(".//form[@name='login_form']//a")
     link.click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//h1"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//h1")))
 
 
 def test_fill_registration_form(driver):

@@ -150,7 +150,7 @@ def test_click_save(driver):
 def test_check_save(driver):
     time.sleep(2)
     driver.find_element_by_xpath(".//a[text()='Rubber Ducks']").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located, (By.XPATH, ".//a[text()='Subcategory']"))
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, ".//a[text()='Subcategory']")))
     driver.find_element_by_xpath(".//a[text()='Subcategory']").click()
     products = driver.find_elements_by_xpath(".//a[text()='{}']".format(name))
     assert len(products) == 3
